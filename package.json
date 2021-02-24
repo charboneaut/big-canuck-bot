@@ -1,0 +1,25 @@
+{
+  "name": "big-canuck-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
