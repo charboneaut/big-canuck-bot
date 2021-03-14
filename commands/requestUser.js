@@ -1,5 +1,6 @@
 import { checkIfAsking, checkWhatisAsked } from "../assets/utils";
 import { User } from "../assets/models";
+import { MessageEmbed } from "discord.js";
 
 export default function requestUser(msg) {
   if (checkIfAsking(msg) && checkWhatisAsked(msg, "user")) {
@@ -28,15 +29,22 @@ export default function requestUser(msg) {
         for (const arr of specialWords) {
           specialStr += "[ " + arr[0] + ", " + arr[1] + " times ] ";
         }
-        msg.channel
-          .send(`\`\`\`info on ${user.username} LVL ${user.level} | EXP ${user.exp} / ${user.expCap} | ${user.pr} POWER RATING
-----------------------------
-username: ${user.username}
-id: ${user.discId}
-bot: ${user.bot}
-last awake: ${user.lastAwake}
-admin: ${user.admin} //? for restricted bot commands
-says the most: ${specialStr}\`\`\``);
+        const userEmbed = new MessageEmbed()
+          .setColor("ffffff")
+          .setTitle(`${user.username} @ ${user.discId}`)
+          .addFields(
+            { name: "bot", value: user.bot },
+            { name: "admin", value: user.admin },
+            {
+              name: "last awake",
+              value: user.lastAwake,
+            },
+            {
+              name: "says the most",
+              value: specialStr,
+            }
+          );
+        msg.channel.send(userEmbed);
       }
     });
   }

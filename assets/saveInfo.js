@@ -25,7 +25,6 @@ export default function saveInfo(msg) {
       user.username = userMessage.username;
       const msgWords = msg.content.match(/\b\S*/g);
       if (!msgWords) {
-        console.log("message doesn't contain any words, ejecting...");
         return;
       }
       let wordObj = { ...user.words };

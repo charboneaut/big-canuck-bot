@@ -48,9 +48,19 @@ client.on("message", (msg) => {
 
 client.on("message", (msg) => {
   if (checkIfAsking(msg) && checkWhatisAsked(msg, "help")) {
-    msg.channel.send(`\`\`\`commands:
-    bc user "<username>" //? snatch info from the big canuck db about a user
-    bc list //? lists all users according to big canuck\`\`\``);
+    const helpMessage = new Discord.MessageEmbed()
+      .setTitle("commands")
+      .addFields(
+        {
+          name: "bc user <username>",
+          value: "fetch info about a user",
+        },
+        {
+          name: "bc list",
+          value: "lists all users",
+        }
+      );
+    msg.channel.send(helpMessage);
   }
 });
 
